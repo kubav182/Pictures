@@ -6,8 +6,6 @@
 package cz.venglarjakub.ppj.pictures.domain;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.io.Serializable;
 import java.util.List;
 
@@ -17,7 +15,6 @@ import java.util.List;
 @Entity
 @Table(name = "tag", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"name"})})
-@XmlRootElement
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -58,7 +55,6 @@ public class Tag implements Serializable {
         this.name = name;
     }
 
-    @XmlTransient
     public List<Picture> getPictureList() {
         return pictureList;
     }

@@ -2,7 +2,6 @@
 package cz.venglarjakub.ppj.pictures.domain;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 
 /**
@@ -10,7 +9,6 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "comment")
-@XmlRootElement
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
