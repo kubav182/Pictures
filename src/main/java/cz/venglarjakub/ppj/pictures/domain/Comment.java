@@ -26,10 +26,10 @@ public class Comment implements Serializable {
     private int dislikes;
     @JoinColumn(name = "Picture_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
-    private Picture pictureid;
+    private Picture picture;
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
-    private Author authorid;
+    private Author author;
 
     public Comment() {
     }
@@ -77,20 +77,20 @@ public class Comment implements Serializable {
         this.dislikes = dislikes;
     }
 
-    public Picture getPictureid() {
-        return pictureid;
+    public Picture getPicture() {
+        return picture;
     }
 
-    public void setPictureid(Picture pictureid) {
-        this.pictureid = pictureid;
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 
-    public Author getAuthorid() {
-        return authorid;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorid(Author authorid) {
-        this.authorid = authorid;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override

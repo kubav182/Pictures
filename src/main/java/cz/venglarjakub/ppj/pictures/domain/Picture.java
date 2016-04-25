@@ -44,7 +44,7 @@ public class Picture implements Serializable {
     private List<Comment> commentList;
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
-    private Author authorid;
+    private Author author;
 
     public Picture() {
     }
@@ -117,12 +117,12 @@ public class Picture implements Serializable {
         this.commentList = commentList;
     }
 
-    public Author getAuthorid() {
-        return authorid;
+    public Author getAuthor() {
+        return author;
     }
 
-    public void setAuthorid(Author authorid) {
-        this.authorid = authorid;
+    public void setAuthor(Author author) {
+        this.author = author;
     }
 
     @Override
