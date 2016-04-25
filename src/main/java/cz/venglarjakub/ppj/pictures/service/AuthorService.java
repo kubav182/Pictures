@@ -17,6 +17,6 @@ public interface AuthorService {
 
     public List<Author> getAll();
 
-    public Author findById(Integer id);
+    public Author getById(Integer id);
 
 }

@@ -39,7 +39,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author findById(Integer id) {
+    public Author getById(Integer id) {
         return null;
     }
 }
