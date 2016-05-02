@@ -1,8 +1,8 @@
 package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Comment;
-import cz.venglarjakub.ppj.pictures.repository.CommentJpaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,7 +16,7 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
-    private CommentJpaRepository commentJpaRepository;
+    private JpaRepository commentRepository;
 
     @Override
     public int like() {

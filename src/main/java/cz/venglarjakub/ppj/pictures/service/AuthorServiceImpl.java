@@ -1,7 +1,7 @@
 package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Author;
-import cz.venglarjakub.ppj.pictures.repository.AuthorJpaRepository;
+import cz.venglarjakub.ppj.pictures.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,7 @@ import java.util.List;
 public class AuthorServiceImpl implements AuthorService {
 
     @Autowired
-    private AuthorJpaRepository authorJpaRepository;
+    private AuthorRepository authorRepository;
 
     @Override
     public Author save(Author author) {

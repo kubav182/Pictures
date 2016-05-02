@@ -1,8 +1,8 @@
 package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Picture;
-import cz.venglarjakub.ppj.pictures.repository.PictureJpaRepository;
-import cz.venglarjakub.ppj.pictures.repository.PictureMongoRepository;
+import cz.venglarjakub.ppj.pictures.repository.MongoPictureRepository;
+import cz.venglarjakub.ppj.pictures.repository.PictureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,10 +17,10 @@ import java.util.List;
 public class PictureServiceImpl implements PictureService {
 
     @Autowired
-    private PictureJpaRepository pictureJpaRepository;
+    private PictureRepository pictureRepository;
 
     @Autowired
-    private PictureMongoRepository pictureMongoRepository;
+    private MongoPictureRepository pictureMongoRepository;
 
     @Override
     public int like() {
