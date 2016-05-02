@@ -40,7 +40,7 @@ public class Picture implements Serializable {
             @JoinColumn(name = "Tag_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<Tag> tagList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pictureid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Comment> commentList;
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)

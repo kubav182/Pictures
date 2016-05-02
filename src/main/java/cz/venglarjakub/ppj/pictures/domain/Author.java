@@ -24,9 +24,9 @@ public class Author implements Serializable {
     @Column(name = "registration_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Comment> commentList;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "authorid")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Picture> pictureList;
 
     public Author() {
