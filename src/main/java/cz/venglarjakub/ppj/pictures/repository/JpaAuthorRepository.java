@@ -8,7 +8,11 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by kuba on 25. 4. 2016.
  */
-@Profile("PROD_MYSQL")
+@Profile("prod-mysql")
 @Repository
 public interface JpaAuthorRepository extends JpaRepository<Author, Integer>, AuthorRepository {
+
+
+    Author findByName(String name);
+
 }

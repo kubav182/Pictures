@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by kuba on 25. 4. 2016.
  */
-@Profile("PROD_MYSQL")
+@Profile("prod-mysql")
 @Repository
 public interface JpaPictureRepository extends JpaRepository<Picture, Integer>, PictureRepository {
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 /**
  * Created by Jakub Venglar on 25. 4. 2016.
  */
-@Profile("PROD_MONGO")
+@Profile("prod-mongo")
 @Repository
 public interface MongoAuthorRepository extends MongoRepository<Author, Integer>, AuthorRepository {
 }
