@@ -25,21 +25,21 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author update(Author author) {
-        return null;
+        return authorRepository.save(author);
     }
 
     @Override
     public void delete(Integer id) {
-
+        authorRepository.delete(id);
     }
 
     @Override
     public List<Author> getAll() {
-        return null;
+        return authorRepository.findAll();
     }
 
     @Override
     public Author getById(Integer id) {
-        return null;
+        return authorRepository.findById(id);
     }
 }

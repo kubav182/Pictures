@@ -1,6 +1,11 @@
 
 package cz.venglarjakub.ppj.pictures.domain;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -9,6 +14,9 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "comment")
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jsonId", scope = Comment.class)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

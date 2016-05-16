@@ -19,37 +19,53 @@ public class PictureServiceImpl implements PictureService {
     private PictureRepository pictureRepository;
 
     @Override
-    public int like() {
-        return 0;
+    public int like(Integer id) {
+        Picture picture = pictureRepository.findById(id);
+        if (picture != null) {
+            int likes = picture.getLikes() + 1;
+            picture.setLikes(likes);
+            pictureRepository.save(picture);
+            return likes;
+        } else {
+            return -1;
+        }
     }
 
     @Override
-    public int dislike() {
-        return 0;
+    public int dislike(Integer id) {
+        Picture picture = pictureRepository.findById(id);
+        if (picture != null) {
+            int dislikes = picture.getDislikes() + 1;
+            picture.setDislikes(dislikes);
+            pictureRepository.save(picture);
+            return dislikes;
+        } else {
+            return -1;
+        }
     }
 
     @Override
     public Picture save(Picture picture) {
-        return null;
+        return pictureRepository.save(picture);
     }
 
     @Override
     public Picture update(Picture picture) {
-        return null;
+        return pictureRepository.save(picture);
     }
 
     @Override
     public void delete(Integer id) {
-
+        pictureRepository.delete(id);
     }
 
     @Override
     public List<Picture> getAll() {
-        return null;
+        return pictureRepository.findAll();
     }
 
     @Override
     public Picture getById(Integer id) {
-        return null;
+        return pictureRepository.findById(id);
     }
 }

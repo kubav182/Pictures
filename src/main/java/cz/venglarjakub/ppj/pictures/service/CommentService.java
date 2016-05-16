@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface CommentService {
 
-    public int like();
+    public int like(Integer id);
 
-    public int dislike();
+    public int dislike(Integer id);
 
     public Comment save(Comment comment);
 

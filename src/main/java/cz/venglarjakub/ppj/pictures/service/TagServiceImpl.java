@@ -20,26 +20,26 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag save(Tag tag) {
-        return null;
+        return tagRepository.save(tag);
     }
 
     @Override
     public Tag update(Tag tag) {
-        return null;
+        return tagRepository.save(tag);
     }
 
     @Override
     public void delete(Integer id) {
-
+        tagRepository.delete(id);
     }
 
     @Override
     public List<Tag> getAll() {
-        return null;
+        return tagRepository.findAll();
     }
 
     @Override
     public Tag getById(Integer id) {
-        return null;
+        return tagRepository.findById(id);
     }
 }

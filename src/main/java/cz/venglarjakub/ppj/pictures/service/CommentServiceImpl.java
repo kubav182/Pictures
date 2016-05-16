@@ -19,37 +19,53 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
 
     @Override
-    public int like() {
-        return 0;
+    public int like(Integer id) {
+        Comment comment = commentRepository.findById(id);
+        if (comment != null) {
+            int likes = comment.getLikes() + 1;
+            comment.setLikes(likes);
+            commentRepository.save(comment);
+            return likes;
+        } else {
+            return -1;
+        }
     }
 
     @Override
-    public int dislike() {
-        return 0;
+    public int dislike(Integer id) {
+        Comment comment = commentRepository.findById(id);
+        if (comment != null) {
+            int dislikes = comment.getDislikes() + 1;
+            comment.setDislikes(dislikes);
+            commentRepository.save(comment);
+            return dislikes;
+        } else {
+            return -1;
+        }
     }
 
     @Override
     public Comment save(Comment comment) {
-        return null;
+        return commentRepository.save(comment);
     }
 
     @Override
     public Comment update(Comment comment) {
-        return null;
+        return commentRepository.save(comment);
     }
 
     @Override
     public void delete(Integer id) {
-
+        commentRepository.delete(id);
     }
 
     @Override
     public List<Comment> getAll() {
-        return null;
+        return commentRepository.findAll();
     }
 
     @Override
     public Comment getById(Integer id) {
-        return null;
+        return commentRepository.findById(id);
     }
 }

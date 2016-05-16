@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
@@ -17,15 +18,13 @@ import java.util.Date;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(Application.class)
-//@Profile("prod-mysql")
+@Profile("prod-mysql")
 public class AuthorServiceImplTest {
 
     private static final Logger logger = LoggerFactory.getLogger(AuthorServiceImplTest.class);
 
     @Autowired
     private AuthorService instance;
-    //@Autowired
-    //JpaAuthorRepository instance;
 
     @Test
     public void testSave() throws Exception {
