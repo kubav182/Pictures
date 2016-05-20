@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class TagRestController {
     }
 
     @RequestMapping(value = "/tag/{id}", method = RequestMethod.GET)
-    public Tag getById(@PathVariable Integer id) {
+    public Tag getById(@PathVariable BigInteger id) {
         return tagService.getById(id);
     }
 
@@ -34,12 +35,12 @@ public class TagRestController {
     }
 
     @RequestMapping(value = "/tag/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable BigInteger id) {
         tagService.delete(id);
     }
 
     @RequestMapping(value = "/tag/{id}", method = RequestMethod.PUT)
-    public Tag update(@PathVariable Integer id, @RequestBody Tag tag) {
+    public Tag update(@PathVariable BigInteger id, @RequestBody Tag tag) {
         tag.setId(id);
         return tagService.update(tag);
     }

@@ -14,6 +14,9 @@
         </encoder>
     </appender>
 
+    <logger name="org.hibernate" level="OFF" additivity="false">
+    </logger>
+
     <logger name="org.springframework" level="WARN"></logger>
     <logger name="cz.venglarjakub.ppj.pictures" level="INFO"></logger>
 
@@ -23,7 +26,8 @@
     </root>
 
     <springProfile name="test">
-        <logger name="org.hibernate.tool.hbm2ddl.SchemaExport" level="DEBUG"></logger>
+        <logger name="org.hibernate.tool.hbm2ddl.SchemaExport" level="ERROR"></logger>
+        <logger name="org.springframework" level="WARN" additivity="false"></logger>
     </springProfile>
 
 

@@ -3,6 +3,7 @@ package cz.venglarjakub.ppj.pictures.repository;
 import cz.venglarjakub.ppj.pictures.domain.Author;
 import org.springframework.data.jpa.repository.Modifying;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -14,12 +15,12 @@ public interface AuthorRepository {
 
     public List<Author> findAll();
 
-    public Author findById(Integer id);
+    public Author findById(BigInteger id);
 
     @Modifying
     public Author save(Author author);
 
     @Modifying
-    public void delete(Integer id);
+    public void delete(BigInteger id);
 
 }

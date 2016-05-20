@@ -2,6 +2,7 @@ package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Author;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -13,10 +14,10 @@ public interface AuthorService {
 
     public Author update(Author author);
 
-    public void delete(Integer id);
+    public void delete(BigInteger id);
 
     public List<Author> getAll();
 
-    public Author getById(Integer id);
+    public Author getById(BigInteger id);
 
 }

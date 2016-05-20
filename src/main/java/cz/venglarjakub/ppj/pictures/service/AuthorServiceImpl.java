@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(BigInteger id) {
         authorRepository.delete(id);
     }
 
@@ -39,7 +40,7 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author getById(Integer id) {
+    public Author getById(BigInteger id) {
         return authorRepository.findById(id);
     }
 }

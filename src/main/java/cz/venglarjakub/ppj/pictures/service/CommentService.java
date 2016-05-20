@@ -1,7 +1,9 @@
 package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Comment;
+import cz.venglarjakub.ppj.pictures.domain.Picture;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -9,18 +11,20 @@ import java.util.List;
  */
 public interface CommentService {
 
-    public int like(Integer id);
+    public int like(BigInteger id);
 
-    public int dislike(Integer id);
+    public int dislike(BigInteger id);
 
     public Comment save(Comment comment);
 
     public Comment update(Comment comment);
 
-    public void delete(Integer id);
+    public void delete(BigInteger id);
 
     public List<Comment> getAll();
 
-    public Comment getById(Integer id);
+    public Comment getById(BigInteger id);
+
+    public List<Comment> getByPicture(Picture picture);
 
 }

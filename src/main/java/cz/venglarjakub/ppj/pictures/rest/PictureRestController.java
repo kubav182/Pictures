@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class PictureRestController {
     }
 
     @RequestMapping(value = "/picture/{id}", method = RequestMethod.GET)
-    public Picture getById(@PathVariable Integer id) {
+    public Picture getById(@PathVariable BigInteger id) {
         return pictureService.getById(id);
     }
 
@@ -34,12 +35,12 @@ public class PictureRestController {
     }
 
     @RequestMapping(value = "/picture/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable BigInteger id) {
         pictureService.delete(id);
     }
 
     @RequestMapping(value = "/picture/{id}", method = RequestMethod.PUT)
-    public Picture update(@PathVariable Integer id, @RequestBody Picture picture) {
+    public Picture update(@PathVariable BigInteger id, @RequestBody Picture picture) {
         picture.setId(id);
         return pictureService.update(picture);
     }

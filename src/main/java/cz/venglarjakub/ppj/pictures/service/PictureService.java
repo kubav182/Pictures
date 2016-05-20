@@ -2,6 +2,7 @@ package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Picture;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -9,18 +10,22 @@ import java.util.List;
  */
 public interface PictureService {
 
-    public int like(Integer id);
+    public int like(BigInteger id);
 
-    public int dislike(Integer id);
+    public int dislike(BigInteger id);
 
     public Picture save(Picture picture);
 
     public Picture update(Picture picture);
 
-    public void delete(Integer id);
+    public void delete(BigInteger id);
 
     public List<Picture> getAll();
 
-    public Picture getById(Integer id);
+    public Picture getById(BigInteger id);
+
+    public Picture getNextById(BigInteger id);
+
+    public Picture getPreviousById(BigInteger id);
 
 }

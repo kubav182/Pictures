@@ -1,11 +1,13 @@
 package cz.venglarjakub.ppj.pictures.service;
 
+import cz.venglarjakub.ppj.pictures.domain.Picture;
 import cz.venglarjakub.ppj.pictures.domain.Tag;
 import cz.venglarjakub.ppj.pictures.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -29,7 +31,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(BigInteger id) {
         tagRepository.delete(id);
     }
 
@@ -39,7 +41,12 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public Tag getById(Integer id) {
+    public Tag getById(BigInteger id) {
         return tagRepository.findById(id);
+    }
+
+    @Override
+    public List<Tag> getByPicture(Picture picture) {
+        return tagRepository.findByPictureList(picture);
     }
 }

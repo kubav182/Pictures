@@ -3,6 +3,7 @@ package cz.venglarjakub.ppj.pictures.repository;
 import cz.venglarjakub.ppj.pictures.domain.Picture;
 import org.springframework.data.jpa.repository.Modifying;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -10,14 +11,18 @@ import java.util.List;
  */
 public interface PictureRepository {
 
+    public Picture findFirstByIdGreaterThan(BigInteger id);
+
+    public Picture findFirstByIdLessThanOrderByIdDesc(BigInteger id);
+
     public List<Picture> findAll();
 
-    public Picture findById(Integer id);
+    public Picture findById(BigInteger id);
 
     @Modifying
     public Picture save(Picture picture);
 
     @Modifying
-    public void delete(Integer id);
+    public void delete(BigInteger id);
 
 }

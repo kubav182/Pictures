@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class AuthorRestController {
     }
 
     @RequestMapping(value = "/author/{id}", method = RequestMethod.GET)
-    public Author getById(@PathVariable Integer id) {
+    public Author getById(@PathVariable BigInteger id) {
         return authorService.getById(id);
     }
 
@@ -34,12 +35,12 @@ public class AuthorRestController {
     }
 
     @RequestMapping(value = "/author/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable BigInteger id) {
         authorService.delete(id);
     }
 
     @RequestMapping(value = "/author/{id}", method = RequestMethod.PUT)
-    public Author update(@PathVariable Integer id, @RequestBody Author author) {
+    public Author update(@PathVariable BigInteger id, @RequestBody Author author) {
         author.setId(id);
         return authorService.update(author);
     }

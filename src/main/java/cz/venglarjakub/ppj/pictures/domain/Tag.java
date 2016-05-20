@@ -9,14 +9,18 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.List;
 
 /**
  * @author kuba
  */
+@Document(collection = "tag")
 @Entity
 @Table(name = "tag", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"name"})})
@@ -25,34 +29,36 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Tag implements Serializable {
     private static final long serialVersionUID = 1L;
+    @org.springframework.data.annotation.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private BigInteger id;
     @Basic(optional = false)
     @Column(name = "name", nullable = false, length = 16)
     private String name;
+    @DBRef
     @ManyToMany(mappedBy = "tagList")
     private List<Picture> pictureList;
 
     public Tag() {
     }
 
-    public Tag(Integer id) {
+    public Tag(BigInteger id) {
         this.id = id;
     }
 
-    public Tag(Integer id, String name) {
+    public Tag(BigInteger id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

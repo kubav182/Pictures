@@ -5,15 +5,19 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author kuba
  */
+@Document(collection = "author")
 @Entity
 @Table(name = "author")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jsonId", scope = Author.class)
@@ -21,11 +25,13 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Author implements Serializable {
     private static final long serialVersionUID = 1L;
+
+    @org.springframework.data.annotation.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private BigInteger id;
     @Basic(optional = false)
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -33,29 +39,31 @@ public class Author implements Serializable {
     @Column(name = "registration_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
+    @DBRef
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Comment> commentList;
+    @DBRef
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Picture> pictureList;
 
     public Author() {
     }
 
-    public Author(Integer id) {
+    public Author(BigInteger id) {
         this.id = id;
     }
 
-    public Author(Integer id, String name, Date registrationDate) {
+    public Author(BigInteger id, String name, Date registrationDate) {
         this.id = id;
         this.name = name;
         this.registrationDate = registrationDate;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 

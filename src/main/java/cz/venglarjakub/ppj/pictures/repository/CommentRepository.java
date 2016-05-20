@@ -1,8 +1,10 @@
 package cz.venglarjakub.ppj.pictures.repository;
 
 import cz.venglarjakub.ppj.pictures.domain.Comment;
+import cz.venglarjakub.ppj.pictures.domain.Picture;
 import org.springframework.data.jpa.repository.Modifying;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -12,12 +14,14 @@ public interface CommentRepository {
 
     public List<Comment> findAll();
 
-    public Comment findById(Integer id);
+    public Comment findById(BigInteger id);
 
     @Modifying
     public Comment save(Comment comment);
 
     @Modifying
-    public void delete(Integer id);
+    public void delete(BigInteger id);
+
+    public List<Comment> findByPicture(Picture picture);
 
 }

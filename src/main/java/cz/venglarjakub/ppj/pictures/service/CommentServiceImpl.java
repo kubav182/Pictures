@@ -1,11 +1,13 @@
 package cz.venglarjakub.ppj.pictures.service;
 
 import cz.venglarjakub.ppj.pictures.domain.Comment;
+import cz.venglarjakub.ppj.pictures.domain.Picture;
 import cz.venglarjakub.ppj.pictures.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ public class CommentServiceImpl implements CommentService {
     private CommentRepository commentRepository;
 
     @Override
-    public int like(Integer id) {
+    public int like(BigInteger id) {
         Comment comment = commentRepository.findById(id);
         if (comment != null) {
             int likes = comment.getLikes() + 1;
@@ -32,7 +34,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public int dislike(Integer id) {
+    public int dislike(BigInteger id) {
         Comment comment = commentRepository.findById(id);
         if (comment != null) {
             int dislikes = comment.getDislikes() + 1;
@@ -55,7 +57,7 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(BigInteger id) {
         commentRepository.delete(id);
     }
 
@@ -65,7 +67,12 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment getById(Integer id) {
+    public Comment getById(BigInteger id) {
         return commentRepository.findById(id);
+    }
+
+    @Override
+    public List<Comment> getByPicture(Picture picture) {
+        return commentRepository.findByPicture(picture);
     }
 }

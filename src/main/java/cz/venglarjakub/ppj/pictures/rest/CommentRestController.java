@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -24,7 +25,7 @@ public class CommentRestController {
     }
 
     @RequestMapping(value = "/comment/{id}", method = RequestMethod.GET)
-    public Comment getById(@PathVariable Integer id) {
+    public Comment getById(@PathVariable BigInteger id) {
         return commentService.getById(id);
     }
 
@@ -34,12 +35,12 @@ public class CommentRestController {
     }
 
     @RequestMapping(value = "/comment/{id}", method = RequestMethod.DELETE)
-    public void delete(@PathVariable Integer id) {
+    public void delete(@PathVariable BigInteger id) {
         commentService.delete(id);
     }
 
     @RequestMapping(value = "/comment/{id}", method = RequestMethod.PUT)
-    public Comment update(@PathVariable Integer id, @RequestBody Comment comment) {
+    public Comment update(@PathVariable BigInteger id, @RequestBody Comment comment) {
         comment.setId(id);
         return commentService.update(comment);
     }

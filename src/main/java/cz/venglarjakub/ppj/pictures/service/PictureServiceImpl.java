@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigInteger;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ public class PictureServiceImpl implements PictureService {
     private PictureRepository pictureRepository;
 
     @Override
-    public int like(Integer id) {
+    public int like(BigInteger id) {
         Picture picture = pictureRepository.findById(id);
         if (picture != null) {
             int likes = picture.getLikes() + 1;
@@ -32,7 +33,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public int dislike(Integer id) {
+    public int dislike(BigInteger id) {
         Picture picture = pictureRepository.findById(id);
         if (picture != null) {
             int dislikes = picture.getDislikes() + 1;
@@ -55,7 +56,7 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(BigInteger id) {
         pictureRepository.delete(id);
     }
 
@@ -65,7 +66,17 @@ public class PictureServiceImpl implements PictureService {
     }
 
     @Override
-    public Picture getById(Integer id) {
+    public Picture getById(BigInteger id) {
         return pictureRepository.findById(id);
+    }
+
+    @Override
+    public Picture getNextById(BigInteger id) {
+        return pictureRepository.findFirstByIdGreaterThan(id);
+    }
+
+    @Override
+    public Picture getPreviousById(BigInteger id) {
+        return pictureRepository.findFirstByIdLessThanOrderByIdDesc(id);
     }
 }

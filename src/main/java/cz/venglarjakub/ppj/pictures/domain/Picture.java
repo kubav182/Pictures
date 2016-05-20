@@ -9,15 +9,19 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
 /**
  * @author kuba
  */
+@Document(collection = "picture")
 @Entity
 @Table(name = "picture")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class, property = "@jsonId", scope = Picture.class)
@@ -25,11 +29,12 @@ import java.util.List;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Picture implements Serializable {
     private static final long serialVersionUID = 1L;
+    @org.springframework.data.annotation.Id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private BigInteger id;
     @Basic(optional = false)
     @Column(name = "name", nullable = false, length = 100)
     private String name;
@@ -43,13 +48,16 @@ public class Picture implements Serializable {
     @Basic(optional = false)
     @Column(name = "dislikes", nullable = false)
     private int dislikes;
+    @DBRef
     @JoinTable(name = "picture_has_tag", joinColumns = {
             @JoinColumn(name = "Picture_id", referencedColumnName = "id", nullable = false)}, inverseJoinColumns = {
             @JoinColumn(name = "Tag_id", referencedColumnName = "id", nullable = false)})
     @ManyToMany
     private List<Tag> tagList;
+    @DBRef
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
     private List<Comment> commentList;
+    @DBRef
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)
     @ManyToOne(optional = false)
     private Author author;
@@ -57,11 +65,11 @@ public class Picture implements Serializable {
     public Picture() {
     }
 
-    public Picture(Integer id) {
+    public Picture(BigInteger id) {
         this.id = id;
     }
 
-    public Picture(Integer id, String name, Date lastUpdate, int likes, int dislikes) {
+    public Picture(BigInteger id, String name, Date lastUpdate, int likes, int dislikes) {
         this.id = id;
         this.name = name;
         this.lastUpdate = lastUpdate;
@@ -69,11 +77,11 @@ public class Picture implements Serializable {
         this.dislikes = dislikes;
     }
 
-    public Integer getId() {
+    public BigInteger getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(BigInteger id) {
         this.id = id;
     }
 
