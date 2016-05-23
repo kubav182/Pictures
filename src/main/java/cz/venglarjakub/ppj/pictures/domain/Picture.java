@@ -39,6 +39,9 @@ public class Picture implements Serializable {
     @Column(name = "name", nullable = false, length = 100)
     private String name;
     @Basic(optional = false)
+    @Column(name = "url", nullable = false, length = 200)
+    private String url;
+    @Basic(optional = false)
     @Column(name = "last_update", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastUpdate;
@@ -69,9 +72,18 @@ public class Picture implements Serializable {
         this.id = id;
     }
 
-    public Picture(BigInteger id, String name, Date lastUpdate, int likes, int dislikes) {
+    public Picture(BigInteger id, String name, String url, Date lastUpdate, int likes, int dislikes) {
         this.id = id;
         this.name = name;
+        this.lastUpdate = lastUpdate;
+        this.likes = likes;
+        this.dislikes = dislikes;
+        this.url = url;
+    }
+
+    public Picture(String name, String url, Date lastUpdate, int likes, int dislikes) {
+        this.name = name;
+        this.url = url;
         this.lastUpdate = lastUpdate;
         this.likes = likes;
         this.dislikes = dislikes;
@@ -139,6 +151,14 @@ public class Picture implements Serializable {
 
     public void setAuthor(Author author) {
         this.author = author;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     @Override

@@ -32,12 +32,17 @@ public class PictureController {
     @Autowired
     private TagService tagService;
 
-    @RequestMapping(value = "/pictures", method = RequestMethod.GET)
+    @RequestMapping(value = {"/pictures", "/"}, method = RequestMethod.GET)
     public String pictures(Model model) {
-        model.addAttribute("name", "kuba");
-        model.addAttribute("picture", new Picture());
 
-        return "greeting";
+        Picture currentPicture = pictureService.getNextById(BigInteger.valueOf(0));
+        BigInteger id = BigInteger.valueOf(0);
+        if (currentPicture != null) {
+            id = currentPicture.getId();
+        }
+
+        return "redirect:pictures/" + id;
+
     }
 
     @RequestMapping(value = "/pictures/save", method = RequestMethod.POST)
@@ -75,7 +80,7 @@ public class PictureController {
 
         model.addAttribute("name", "kuba");
 
-        return "greeting";
+        return "pictures";
     }
 
     @RequestMapping(value = "/pictures/{id}/like", method = RequestMethod.GET)
