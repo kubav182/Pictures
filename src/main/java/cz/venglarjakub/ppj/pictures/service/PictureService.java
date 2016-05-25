@@ -16,6 +16,8 @@ public interface PictureService {
 
     public Picture save(Picture picture);
 
+    public Picture save(Picture picture, byte[] image);
+
     public Picture update(Picture picture);
 
     public void delete(BigInteger id);

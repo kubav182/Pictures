@@ -39,7 +39,7 @@ public class Tag implements Serializable {
     @Column(name = "name", nullable = false, length = 16)
     private String name;
     @DBRef
-    @ManyToMany(mappedBy = "tagList")
+    @ManyToMany(mappedBy = "tagList", cascade = CascadeType.ALL)
     private List<Picture> pictureList;
 
     public Tag() {

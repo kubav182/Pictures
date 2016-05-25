@@ -17,7 +17,7 @@ public interface PictureRepository {
 
     public List<Picture> findAll();
 
-    public Picture findById(BigInteger id);
+    public Picture findOne(BigInteger id);
 
     @Modifying
     public Picture save(Picture picture);

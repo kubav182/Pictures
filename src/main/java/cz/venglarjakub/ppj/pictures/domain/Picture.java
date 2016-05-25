@@ -31,7 +31,7 @@ public class Picture implements Serializable {
     private static final long serialVersionUID = 1L;
     @org.springframework.data.annotation.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private BigInteger id;
@@ -58,11 +58,11 @@ public class Picture implements Serializable {
     @ManyToMany
     private List<Tag> tagList;
     @DBRef
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "picture")
     private List<Comment> commentList;
     @DBRef
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Author author;
 
     public Picture() {

@@ -14,7 +14,7 @@ public interface CommentRepository {
 
     public List<Comment> findAll();
 
-    public Comment findById(BigInteger id);
+    public Comment findOne(BigInteger id);
 
     @Modifying
     public Comment save(Comment comment);

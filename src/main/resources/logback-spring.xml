@@ -8,7 +8,7 @@
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
         <file>log.txt</file>
-        <append>true</append>
+        <append>false</append>
         <encoder>
             <pattern>%d{HH:mm:ss.SSS} {%thread} %-5level %logger{36} - %msg%n</pattern>
         </encoder>
@@ -23,7 +23,8 @@
     </root>
 
     <springProfile name="test">
-        <logger name="org.hibernate.tool.hbm2ddl.SchemaExport" level="DEBUG"></logger>
+        <logger name="org.hibernate.tool.hbm2ddl.SchemaExport" level="ERROR"></logger>
+        <logger name="org.springframework" level="WARN" additivity="false"></logger>
     </springProfile>
 
 

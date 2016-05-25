@@ -15,7 +15,7 @@ public interface AuthorRepository {
 
     public List<Author> findAll();
 
-    public Author findById(BigInteger id);
+    public Author findOne(BigInteger id);
 
     @Modifying
     public Author save(Author author);

@@ -14,7 +14,7 @@ public interface TagRepository {
 
     public List<Tag> findAll();
 
-    public Tag findById(BigInteger id);
+    public Tag findOne(BigInteger id);
 
     @Modifying
     public Tag save(Tag tag);

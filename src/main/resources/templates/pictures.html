@@ -21,30 +21,28 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">PPJ Obrázky</a>
+            <a class="navbar-brand" th:href="@{/}">PPJ Obrázky</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li class="active"><a th:href="@{/}">Home</a></li>
             </ul>
         </div>
     </div>
 </nav>
 
 <div class="container">
-    <p th:text="'Hello, ' + ${name} + '!'"/>
+    <!--  <p th:text="'Hello, ' + ${name} + '!'"/>
     <form action="#" th:action="@{/pictures/save}" th:object="${picture}" method="post">
         <p>Message: <input type="text" th:field="*{name}"/></p>
         <p>
             <input class="btn btn-primary" type="submit" value="Submit"/>
             <input class="btn btn-danger" type="reset" value="Reset"/>
         </p>
-    </form>
+    </form>-->
     <div class="panel panel-primary">
-        <div class="panel-heading text-center" th:text="${picture.name}"></div>
-        <div class="panel-body text-center"><img class="img-thumbnail" th:src="@{'/images/'+${current}+'.png'}"/></div>
+        <div class="panel-heading text-center" th:text="${picture.name + ' (' + picture.author.name + ')'}"></div>
+        <div class="panel-body text-center"><img class="img-thumbnail" th:src="${picture.url}"/></div>
         <div class="panel-footer text-center">
             <a th:href="${previous}" class="btn btn-success" th:disabled="${previous eq -1}">
                 <span class="glyphicon glyphicon-triangle-left"></span>

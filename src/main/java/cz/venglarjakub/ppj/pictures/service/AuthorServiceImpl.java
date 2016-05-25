@@ -41,6 +41,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author getById(BigInteger id) {
-        return authorRepository.findById(id);
+        return authorRepository.findOne(id);
     }
 }

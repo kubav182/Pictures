@@ -22,7 +22,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public int like(BigInteger id) {
-        Comment comment = commentRepository.findById(id);
+        Comment comment = commentRepository.findOne(id);
         if (comment != null) {
             int likes = comment.getLikes() + 1;
             comment.setLikes(likes);
@@ -35,7 +35,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public int dislike(BigInteger id) {
-        Comment comment = commentRepository.findById(id);
+        Comment comment = commentRepository.findOne(id);
         if (comment != null) {
             int dislikes = comment.getDislikes() + 1;
             comment.setDislikes(dislikes);
@@ -68,7 +68,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment getById(BigInteger id) {
-        return commentRepository.findById(id);
+        return commentRepository.findOne(id);
     }
 
     @Override

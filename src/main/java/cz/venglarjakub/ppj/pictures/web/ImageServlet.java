@@ -1,5 +1,7 @@
 package cz.venglarjakub.ppj.pictures.web;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,15 +17,19 @@ import java.nio.file.Files;
 @WebServlet("/images/*")
 public class ImageServlet extends HttpServlet {
 
-    private final String IMAGE_DIR = "c:/tmp";
-    private final String DEFAULT_IMAGE = "not-found.png";
+    @Value("${cz.venglarjakub.ppj.pictures.web.image-dir}")
+    private String imageDir;
+    @Value("${cz.venglarjakub.ppj.pictures.web.default-image}")
+    private String defaultImage;
+    @Value("${server.contextPath}")
+    private String path;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String filename = request.getPathInfo().substring(1);
-        File file = new File(IMAGE_DIR, filename);
+        File file = new File(imageDir, filename);
         if (!file.exists()) {
-            file = new File(IMAGE_DIR, DEFAULT_IMAGE);
+            file = new File(imageDir, defaultImage);
         }
         response.setHeader("Content-Type", getServletContext().getMimeType(filename));
         response.setHeader("Content-Length", String.valueOf(file.length()));

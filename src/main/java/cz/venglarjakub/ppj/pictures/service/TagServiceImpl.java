@@ -42,7 +42,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public Tag getById(BigInteger id) {
-        return tagRepository.findById(id);
+        return tagRepository.findOne(id);
     }
 
     @Override

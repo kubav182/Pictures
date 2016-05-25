@@ -25,7 +25,7 @@ public class Comment implements Serializable {
     private static final long serialVersionUID = 1L;
     @org.springframework.data.annotation.Id
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "id", nullable = false)
     private BigInteger id;
@@ -40,7 +40,7 @@ public class Comment implements Serializable {
     private int dislikes;
     @DBRef
     @JoinColumn(name = "Picture_id", referencedColumnName = "id", nullable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Picture picture;
     @DBRef
     @JoinColumn(name = "Author_id", referencedColumnName = "id", nullable = false)

@@ -40,10 +40,10 @@ public class Author implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date registrationDate;
     @DBRef
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private List<Comment> commentList;
     @DBRef
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "author")
     private List<Picture> pictureList;
 
     public Author() {
