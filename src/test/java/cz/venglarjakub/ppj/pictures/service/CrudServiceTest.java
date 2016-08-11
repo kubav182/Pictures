@@ -7,6 +7,7 @@ import cz.venglarjakub.ppj.pictures.domain.Picture;
 import cz.venglarjakub.ppj.pictures.domain.Tag;
 import org.apache.commons.io.IOUtils;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -47,6 +48,7 @@ public class CrudServiceTest {
     private PictureService pictureService;
 
     @Test
+    @Ignore
     public void testSavePictureToLocal() throws Exception {
         URL url = new URL("http://www.inf.sgsp.edu.pl/pub/MALUNKI_DUZE/ROZNE_DUZE/zaba.png");
         InputStream is = null;
